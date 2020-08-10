@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <!--    引入该js, 可将微信登陆的二维码内嵌到当前页面指定的div中-->
+    <!--    <script type="text/javascript" src="js/wxLogin.js"></script>-->
+</head>
+<body>
+
+<button id="alipay-login">支付宝登陆</button>
+<button id="wechat-login">微信登陆</button>
+
+<script>
+    {
+        let app_id = "2021001187673494";
+        let scope = "auth_user";
+        let redirect_uri = "http://www.xn--qby25h.xn--6qq986b3xl/authRedirect/alipay";
+        let state = "init";
+
+        let alipay_url = "https://openauth.alipay.com/oauth2/publicAppAuthorize.htm"
+            + "?app_id=" + app_id
+            + "&scope=" + scope
+            + "&redirect_uri=" + redirect_uri
+            + "&state=" + state;
+
+        $("#alipay-login").click(function () {
+            window.open(alipay_url);
+        });
+    }
+</script>
+
+<script>
+    {
+        let appid = "wx7287a60bb700fd21";
+        let redirect_uri = "http://www.txjava.cn/loginServlet";
+        let response_type = "code";
+        let scope = "snsapi_login";
+        let state = "init";
+
+        let wechat_url = "https://open.weixin.qq.com/connect/qrconnect"
+            + "?appid=" + appid
+            + "&redirect_uri=" + redirect_uri
+            + "&response_type=" + response_type
+            + "&scope=" + scope
+            + "&state=" + state
+            + "#wechat_redirect";
+
+        $("#wechat-login").click(function () {
+            window.open(wechat_url);
+        });
+
+        // 使用内嵌微信二维码的方式
+        /*      $(function () {
+                    let obj = new WxLogin({
+                        id: "login_container",
+                        appid: "wx7287a60bb700fd21",
+                        scope: "snsapi_login",
+                        redirect_uri: "http://www.txjava.cn/loginServlet"
+                    });
+                })
+        */
+    }
+</script>
+
+</body>
+</html>
